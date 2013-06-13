@@ -51,7 +51,7 @@ define(function(require,exports,module){
 		this.move();
 	}
 	//初始化方法
-	Load.prototype.init=function(){  alert(1);
+	Load.prototype.init=function(){  
 		//旋转的平均角度
 		this.rBase=360/this.lines;
 		//存放每个实际旋转角度
