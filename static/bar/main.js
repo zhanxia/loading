@@ -1,0 +1,116 @@
+/*
+*主函数main
+*/
+define(function(require){
+	var $=require('jquery');
+	var Exp=require('./load');
+	var Ie=require('./ieload');
+	var Tool=require('../lib/tool');
+	/*
+	*初始化参数
+	*/
+	var styleopts={
+			lines:$('#lineNum').val(),
+			length:$('#lengthNum').val()+'px',
+			width:$('#widthNum').val()+'px',
+			radius:$('#radiusNum').val()+'px',
+			border:$('#borderNum').val()+'px',
+			ringColor:$('#colorNum').val(),
+			opacity:$('#opacityNum').val()
+		}, 
+		numopts={
+			schedule:$('#loadTotal').val(),
+			speed:$('#loadSpeed').val(),
+			flag:null,
+			numColor:$('#loadColor').val()
+		},e=null;
+	//初始化是否选择显示加载数值
+	if($('#loadFlagYes').attr("checked")){
+		numopts.flag='true';
+	}else{
+		numopts.flag='false';
+	}
+	//动态改变环条数
+	$('#lineNum').change(function(){
+		$(this).next().html($(this).val());
+		styleopts.lines=$(this).val();
+	});
+	//动态改变环条长
+	$('#lengthNum').change(function(){
+		$(this).next().html($(this).val());
+		styleopts.length=$(this).val()+'px';
+	});
+	//动态改变环条高
+	$('#widthNum').change(function(){
+		$(this).next().html($(this).val());
+		styleopts.width=$(this).val()+'px';
+	});
+	//动态改变环半径
+	$('#radiusNum').change(function(){
+		$(this).next().html($(this).val());
+		styleopts.radius=$(this).val()+'px';
+	});
+	//动态改变环条圆角
+	$('#borderNum').change(function(){
+		$(this).next().html($(this).val());
+		styleopts.border=$(this).val()+'px';
+	});
+	//动态改变环条颜色
+	$('#colorNum').bind('input',function(){
+		$(this).next().html($(this).val());
+		styleopts.ringColor=$(this).val();
+	});
+	//动态改变环条透明度
+	$('#opacityNum').change(function(){
+		$(this).next().html($(this).val());
+		styleopts.opacity=$(this).val();
+	});
+
+	//动态改变加载总进度
+	$('#loadTotal').change(function(){
+		$(this).next().html($(this).val());
+		numopts.schedule=$(this).val();
+	});
+	//动态改变加载速度
+	$('#loadSpeed').change(function(){
+		$(this).next().html($(this).val());
+		numopts.speed=$(this).val();
+	});
+	//监听是否显示加载数值
+	$("#opts input[type='radio']").click(function(){
+		if($(this).attr("checked")){
+			numopts.flag=$(this).val();
+		}
+	})
+	//动态改变数值颜色
+	$('#loadColor').bind('input',function(){
+		$(this).next().html($(this).val());
+		numopts.numColor=$(this).val();
+	});
+
+	/*
+	*控制器
+	*判断浏览器是否支持transform
+	*支持则运行环形加载类
+	*否则运行条形加载类
+	*/
+	$('#run').click(function(){
+		if(Tool.Support('Transform')){
+			if(e){
+				e.destory();
+			}
+			e=new Exp('#preouter','#preview',styleopts,numopts);
+			e.init();
+			e.add();
+			e.render();
+		}else{
+			if(e){
+				e.destory();
+			}
+			e=new Ie('#preouter','#preview',styleopts,numopts);
+			e.init();
+			e.add();
+			e.render();
+		}
+	});
+});

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'/>
+	<link rel="stylesheet" type="text/css" href="static/bar/bar.css"/>
+	<script type="text/javascript" 
+		src="static/seajs/sea.js" 
+		data-config="bar/config" 
+		data-main="bar/main">
+	</script>
+</head>
+<body>
+	<div id="content">
+		<div id="example">
+			<h2>示例</h2>
+			<div id="preview">
+				<div id="preouter">
+
+				</div>
+			</div>
+			<form id="opts">
+				<h4>环样式设置</h4>
+				<label>环条数：</label>
+				<input  type="range" min="6" max="20" step="2" id="lineNum" value="10"/>
+				<span>10</span><br/>
+				<label>环条长：</label>
+				<input  type="range" min="6" max="200" step="2" id="lengthNum" value="10"/>
+				<span>10</span><br/>
+				<label>环条高：</label>
+				<input  type="range" min="6" max="20" step="2" id="widthNum" value="10"/>
+				<span>10</span><br/>
+				<label>环半径：</label>
+				<input  type="range" min="6" max="50" step="2" id="radiusNum" value="10"/>
+				<span>10</span>(tips:适用于环状loading)<br/>
+				<label>环条圆角：</label>
+				<input  type="range" min="0" max="20" step="2" id="borderNum" value="10"/>
+				<span>10</span><br/>
+				<label>环条颜色：</label>
+				<input  type="text"id="colorNum" value="#fff"/>
+				<span>tips:输入格式#ffffff</span><br/>
+				<label>环条透明度：</label>
+				<input  type="range" min="0.1" max="0.8" step="0.1" id="opacityNum" value="0.5"/>
+				<span>0.5</span><br/>
+
+				<h4>数值样式设置</h4>
+				<label>加载总进度：</label>
+				<input  type="range" min="0" max="100" step="1" id="loadTotal" value="80"/>
+				<span>80</span><br/>
+				<label>加载速度：</label>
+				<input  type="range" min="100" max="500" step="20" id="loadSpeed" value="300"/>
+				<span>300</span><br/>
+				<label>是否显示加载数值：</label>
+				是<input  type="radio" name="flag" id="loadFlagYes" value="true" />
+				否<input  type="radio"name="flag" id="loadFlagNo" value="false" checked="true"/><br/>
+				<label>数值颜色：</label>
+				<input  type="text"id="loadColor" value="#ffffff"/>
+				<span>tips:输入格式#ffffff</span><br/>
+				<input type="button" value="运行" id="run"/>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
