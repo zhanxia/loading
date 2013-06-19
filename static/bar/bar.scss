@@ -6,7 +6,7 @@ $h2FontSize:28px;
 	border-radius:$radius;
 }
 
-*{margin:0;padding:0;border:none;}
+*{margin:0;padding:0;}
 body {
 	font-family: "Arial", "宋体","Helvetica", "sans-serif";
 	font-size: 16px;
@@ -44,5 +44,6 @@ html, body {
 
 #loadnum{
 	opacity:1;
+	filter:alpha(opacity=100);
 	text-align:center;
 }
